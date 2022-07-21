@@ -13,6 +13,17 @@ namespace Vidly
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Attribute routing
+            routes.MapMvcAttributeRoutes();
+
+
+            // This way of creating custom routes is not too clean due to magic strings
+            //routes.MapRoute(
+            //    "MoviesByReleaseDate",
+            //    "movies/released/{year}/{month}",
+            //    new {controller = "Movies", action = "ByReleaseDate"},
+            //    new {year = @"2015|2016", month = @"\d{2}"}); // @ is regex string, no need to escape the /
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
